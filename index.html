@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>How much do you make in cappuccinos?</title>
+		<link rel="stylesheet" href="styles/styles.css">
+		<!-- google fonts for autocomplete -->
+		<link rel="prefetch stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800,600">
+		<!-- google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,700" rel="stylesheet">
+	</head>
+	<body>
+		<!-- BEGINNING OF HEADER -->
+		<header>
+			<h1>How much do you make in <br><span> cappuccinos?</span></h1>
+			<div class="scrolldown">
+				<img src="assets/down.svg" alt=""><p>Scroll down to find out</p>
+			</div>
+		</header>
+		<!-- END OF HEADER -->
+		<!-- MAIN -->
+		<main>
+			<!-- FORM SECTION -->
+			<section class="form__section">
+				<!-- FORM WRAPPER -->
+				<div class="wrapper">
+					<h2>Enter your city and occupation below</h2>
+					<form action="">
+						<input type="text" class="my-input" name="field" tabindex="1" autocomplete="off" placeholder="Type in your city here...">
+						<input list="my_occ" placeholder="Type in your occupation here...">
+						<datalist id="my_occ"></datalist>
+						<input type="submit" name="submit" value="Click here for cappuccinos!">
+					</form>
+				</div>
+				<!-- END OF FORM WRAPPER -->
+			</section>
+			<!-- END OF FORM SECTION -->
+			<!-- RESULTS SECTION -->
+			<section class="results__section">
+				<!-- RESULTS WRAPPER -->
+				<div class="wrapper">
+					<p class="result__blurb"></p>
+					<input type="reset" name="reset" value="Click here to try another occupation or city!">
+				</div>
+				<!-- END OF RESULTS WRAPPER -->
+			</section>
+			<!-- END OF RESULTS SECTION -->
+		</main>
+		<!-- END OF MAIN -->
+		<!-- SCRIPT TAGS -->
+		<!-- jquery -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<!-- teleport autocomplete -->
+		<script src="scripts/autocomplete.js"></script>
+		<!-- javascript -->
+		<script src="scripts/script.js"></script>	
+	</body>
+</html>

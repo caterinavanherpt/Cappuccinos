@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <title>Teleport Autocomplete Example</title>
+    <link rel="prefetch stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800,600">
+    <link rel="stylesheet" href="autocomplete.css">
+
+    <style>
+      * { box-sizing: border-box; }
+      html { font-size: 16px; }
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        font-family: 'Open Sans', sans-serif;
+        color: #4a4a4a;
+        margin: 0;
+        padding: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>City Autocomplete Example</h1>
+    <input type="text" class="my-input" name="field" tabindex="1" autocomplete="off">
+
+    <h3>Result history:</h3>
+    <div class="results"></div>
+
+    <script src="autocomplete.js"></script>
+    <script>
+      var $results = document.querySelector('.results');
+      var appendToResult = $results.insertAdjacentHTML.bind($results, 'afterend');
+      TeleportAutocomplete.init('.my-input').on('change', function(value) {
+        console.log(value);
+        // appendToResult('<pre>' + JSON.stringify(value, null, 2) + '</pre>');
+      });
+    </script>
+  </body>
+</html>

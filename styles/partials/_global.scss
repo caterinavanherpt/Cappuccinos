@@ -1,0 +1,120 @@
+//general styles
+html {
+	font-size: 62.5%;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 1170px;
+	width: 90%;
+}
+
+//header section styles 
+header {
+	// Background image created by Mrsiraphol - Freepik.com
+	background-image: url(../assets/hero.jpg);
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	text-align: justify;
+	font-size: 4.0em;
+	line-height: 3em;
+	position: relative;
+	h1 {
+		text-transform: uppercase;
+		text-align: justify;
+		span {
+			font-size: 1.9em;
+	    	letter-spacing: -3px;
+		}
+	}
+	p {
+		line-height: 1em;
+	}
+	img {
+		width: 60px;
+		height: 50px;
+	}
+}
+
+.scrolldown {
+	display: flex;
+	bottom: 0;
+	position: absolute;
+}
+
+// form styling
+.form__section {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	height: 30vh;
+	font-size: 2.5em;
+	form {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+// datalist input styling 
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+// results styling
+.results__section {
+	font-size: 2.5em;
+	height: 100vh;
+}
+
+//RESPONSIVE LARGE STYLING 
+
+@media (max-width: 1000px) {
+	html {
+		font-size: 50%;
+	}
+}
+
+
+//RESPONSIVE MEDIUM STYLING
+
+@media (max-width: 800px) {
+	// html {
+	// 	font-size: 40%;
+	// }
+	header {
+		h1 {
+			max-width: 80%;
+			text-align: center;
+			font-weight: 400;
+			span {
+				font-size: 1.3em;
+				text-align: center;
+				font-weight: 700;
+			}
+		}
+		img {
+			height: 40px;
+		}
+	}
+}
+
+//RESPONSIVE SMALL STYLING 
+
+@media (max-width: 600px) {
+	html {
+		font-size: 28%;
+	}
+	header {
+		img {
+			width: 25px;
+			height: 28px;
+		}
+	}
+}
