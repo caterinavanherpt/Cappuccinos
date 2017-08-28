@@ -1,0 +1,29 @@
+//general styles
+html {
+	font-size: 62.5%;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	color: #251C15;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 1170px;
+	width: 90%;
+}
+
+//RESPONSIVE LARGE STYLING 
+
+@media (max-width: 1000px) {
+	html {
+		font-size: 50%;
+	}
+}
+
+//RESPONSIVE SMALL STYLING 
+
+@media (max-width: 600px) {
+	html {
+		font-size: 28%;
+	}
+}

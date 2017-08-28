@@ -1,0 +1,138 @@
+ //header section styles 
+header {
+	// Background image created by Mrsiraphol - Freepik.com
+	background-image: url(../assets/hero.jpg);
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	text-align: justify;
+	font-size: 4.0em;
+	line-height: 3em;
+	position: relative;
+	h1 {
+		text-transform: uppercase;
+		text-align: justify;
+		span {
+			font-size: 1.9em;
+	    	letter-spacing: -3px;
+		}
+	}
+	p {
+		line-height: 1em;
+	}
+	img {
+		width: 60px;
+		height: 50px;
+	}
+}
+
+.scrolldown {
+	display: flex;
+	bottom: 0;
+	position: absolute;
+}
+
+// form section styling
+.form__section {
+	background-image: url(../assets/hero.jpg);
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	height: 100vh;
+	font-size: 2.5em;
+	h2 {
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 2em;
+		padding-bottom: 50px;
+	}
+	form {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+}
+
+// city and occupation input styling
+.my-input {
+	font-size: 1.5em;
+	width: 500px;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.occ__input {
+	padding: 0.25em;
+	border: solid 1px transparent;
+  	border-radius: 0;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
+	margin-top: 30px;
+	width: 50%;
+	font-size: 1.2em;
+}
+
+//submit input styling
+
+input[type=submit] {
+	border-radius: 50px;
+	border-width: 0;
+	padding: 10px;
+	margin-top: 50px;
+	background: #615C59;
+	color: #D2CDC8;
+	font-size: 1.3em;
+	font-weight: 300;
+}
+
+
+//RESPONSIVE LARGE STYLING 
+
+@media (max-width: 1000px) {
+	.my-input {
+		width: 400px;
+	}
+}
+
+
+//RESPONSIVE MEDIUM STYLING
+
+@media (max-width: 800px) {
+	header {
+		h1 {
+			max-width: 80%;
+			text-align: center;
+			font-weight: 400;
+			span {
+				font-size: 1.3em;
+				text-align: center;
+				font-weight: 700;
+			}
+		}
+		img {
+			height: 40px;
+		}
+	}
+}
+
+//RESPONSIVE SMALL STYLING 
+
+@media (max-width: 600px) {
+	header {
+		img {
+			width: 25px;
+			height: 28px;
+		}
+	}
+	.my-input {
+		width: 200px;
+	}
+	.occ__input {
+		width: 60%;
+	}
+}
