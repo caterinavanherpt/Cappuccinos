@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>How much do you make in cappuccinos?</title>
 		<link rel="stylesheet" href="styles/styles.css">
-		<!-- google fonts for autocomplete -->
-		<link rel="prefetch stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800,600">
+		<link type="image/png" href="assets/coffee.png" rel="icon">
 		<!-- google fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,700" rel="stylesheet">
 	</head>
@@ -15,7 +14,8 @@
 		<header>
 			<h1>How much do you make in <br><span> cappuccinos?</span></h1>
 			<div class="scrolldown">
-				<img src="assets/down.svg" alt=""><p>Scroll down to find out</p>
+				<img src="assets/down.svg" alt="down arrow"><p>Scroll down to find out</p>
+				<!-- down icon created by Daniël Verhoef from the Noun Project https://thenounproject.com/search/?q=down%20arrow&i=922131 -->
 			</div>
 		</header>
 		<!-- END OF HEADER -->
@@ -26,9 +26,9 @@
 				<!-- FORM WRAPPER -->
 				<div class="wrapper">
 					<h2>Enter your city and occupation below</h2>
-					<form action="">
-						<input type="text" class="my-input" name="field" tabindex="1" autocomplete="off" placeholder="Type in your city here...">
-						<input list="my_occ" placeholder="Type in your occupation here...">
+					<form id="form" action="">
+						<input type="text" class="my-input" name="field" autocomplete="off" placeholder="Type in your city here...">
+						<input list="my_occ" class="occ__input" placeholder="Type in your occupation here...">
 						<datalist id="my_occ"></datalist>
 						<input type="submit" name="submit" value="Click here for cappuccinos!">
 					</form>
@@ -36,12 +36,48 @@
 				<!-- END OF FORM WRAPPER -->
 			</section>
 			<!-- END OF FORM SECTION -->
-			<!-- RESULTS SECTION -->
+				<!-- RESULTS SECTION -->
 			<section class="results__section">
 				<!-- RESULTS WRAPPER -->
-				<div class="wrapper">
-					<p class="result__blurb"></p>
-					<input type="reset" name="reset" value="Click here to try another occupation or city!">
+				<div class="wrapper results__wrapper">
+					<div class="results__header">
+						<h2 class="results__ua">Toronto, Ontario, Canada</h2>
+					</div>
+					<div class="results__capp">
+						<h3>cost of a cappuccino:</h3>
+						<p class="results__capp__cost price">$3.20</p>
+					</div>
+					<div class="results__occ">
+						<h3>average <span class="occ__span">web developer </span> salary:</h3>
+						<p class="results__occ__sal price">$43,663</p>
+					</div>
+					<div class="results__icons">
+						<h3>In <span class="results__ua">Toronto, Ontario, Canada </span> an average <span class="occ__span">Web Developer </span> makes <span class="numcapp__span"> 13,645 </span> cappuccinos a year.</h3>
+						<div class="icon__imgs">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">
+							<!-- coffee icon by asianson.design from the Noun Project https://thenounproject.com/search/?q=coffee%20cup&i=1132539 -->
+						</div>
+						<p>*each cup represents approx. 1,000 cappuccinos</p>
+					</div>
+					<div class="results__reset">
+						<div class="currency__change">
+							<p>All values in US dollars. <!-- Change currency here. --></p>
+							<!-- <div id="my-element"></div> -->
+						</div>
+						<input type="reset" name="reset" value="Click here to try another occupation or city!">
+					</div>
 				</div>
 				<!-- END OF RESULTS WRAPPER -->
 			</section>
@@ -51,6 +87,10 @@
 		<!-- SCRIPT TAGS -->
 		<!-- jquery -->
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<!-- currency converter -->
+		<!-- <script src="scripts/curry-0.8.2.min.js"></script> -->
+		<!-- numeral library for formatting numbers -->
+		<script src="scripts/numeral.min.js"></script>
 		<!-- teleport autocomplete -->
 		<script src="scripts/autocomplete.js"></script>
 		<!-- javascript -->

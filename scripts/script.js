@@ -1,5 +1,12 @@
 //empty object to hold all methods 
 var app = {};
+// options for currency converter
+// var options = {
+//     target: '.price',
+//     symbols: {
+//             'CDN' : '$'
+//         }
+// }
 
 //function that gets occupations and displays as options in the datalist
 app.getOccupations = function(number) {
@@ -40,6 +47,7 @@ app.collectInfo = function(value) {
 		var uaName = value.title;
 		var occupation = $('input[list=my_occ]').val();
 		app.getUaData(uaId,occupation,uaName);
+
 	});
 	//alert user when they haven't chosen a valid occupation
 	//code below from https://www.noupe.com/design/html5-datalists-what-you-need-to-know-78024.html
@@ -78,6 +86,13 @@ app.collectInfo = function(value) {
 				}
 		});
 	}
+	//bring the user to the results section and hide the form
+		$('input[type=submit]').on('click', function() {
+		$('html, body').animate({
+			scrollTop: $('.results__section').offset().top
+		}, 1000);
+		$('.form__section').hide();
+	});
 }
 
 //get salaries and quality of life data based on urban area
@@ -100,30 +115,62 @@ app.getUaData = function(uaId,occupation,uaName) {
 			format: 'json'
 		}
 	})
-	//when the promise for the ajax calls come back then get the users salary and the users urban area coffee price
-	$.when(salaries, uaDetails)
+	//ajax call for images
+	var uaIamges = $.ajax({
+		url: `https://api.teleport.org/api/urban_areas/teleport:${uaId}/images/`,
+		method: 'GET',
+		dataType: 'json',
+		data: {
+			format: 'json'
+		}
+	})
+	//when the promise for the ajax calls come back then get the users salary and the users urban area coffee price and the urban area image
+	$.when(salaries, uaDetails, uaIamges)
 		.then(function(salaryData,uaData){
 			var array = salaryData[0].salaries
 			for (var i in array) {
 				if (array[i].job.title == occupation) {
-				var salaryValue = Math.floor(array[i].salary_percentiles.percentile_50);
+				var salaryValue = array[i].salary_percentiles.percentile_50;
 				}
 			}
 			var coffeeValue = uaData[0].categories[3].data[3].currency_dollar_value;
-			app.displayResult(salaryValue,coffeeValue,occupation,uaName)
+			var uaImage = uaIamges.responseJSON.photos[0].image.web;
+			app.displayResult(salaryValue,coffeeValue,occupation,uaName,uaImage)
 		});
 }
 
 //display the result on the page
-app.displayResult = function(salaryValue,coffeeValue,occupation,uaName) {
-	var numCoffee = Math.floor(salaryValue.toFixed(0) / coffeeValue.toFixed(0));
-	var result = `In ${uaName} an average cappuccino costs $${coffeeValue}0 and the average ${occupation} salary is $${salaryValue} a year. <br> You make ${numCoffee} cappuccinos a year!`
-	$('.result__blurb').html(result);
+app.displayResult = function(salaryValue,coffeeValue,occupation,uaName,uaImage) {
+	var salaryRes = numeral(salaryValue).format('$0,0');
+	var coffeeRes = numeral(coffeeValue).format('$0,0.00');
+	var numCoffee = numeral(salaryValue / coffeeValue).format('0,0');
+	var numIcons = Math.round((salaryValue/coffeeValue) / 1000);
+	var resultsHeader = document.querySelector('.results__header')
+	resultsHeader.style.background = `linear-gradient(45deg, rgba(26, 25, 34, 0.17), rgba(255, 255, 255, 0.38)), url(${uaImage})`;
+	$('.results__ua').text(uaName);
+	$('.results__capp__cost').text(coffeeRes);
+	$('.occ__span').text(occupation);
+	$('.results__occ__sal').text(salaryRes);
+	$('.numcapp__span').text(numCoffee);
+	$('.cup').remove();
+	for (i=1; i<=numIcons; i++) {
+		$('.icon__imgs').append('<img src="assets/coffee.svg" alt="one mug of coffee with foam on top" class="cup">');
+	}
+	// bring the user back to the form and reset it
+	$('input[type=reset]').on('click', function() {
+		$('.form__section').show();
+		$('html, body').animate({
+			scrollTop: $('.form__section').offset().top
+		}, 1000);
+		document.getElementById('form').reset();
+	});
 }
 
 //function to initialize/start other functions 
 app.init = function() {
-	//initializing the teleport autocomplete
+	//initializing curry
+	// $('#my-element').curry(options);
+	// initializing the teleport autocomplete
 	TeleportAutocomplete.init('.my-input').on('change', function(value) {
 	app.collectInfo(value);
 	});
@@ -131,7 +178,7 @@ app.init = function() {
 	for(let i = 0; i <= 51; i++) {
 		app.getOccupations(i);
 	}
-	//on page refresh, bring user to the top of the page
+	// on page refresh, bring user to the top of the page
 	$(window).on('load', function(){
 		$('html, body').animate({
 			scrollTop: $('body').offset().top
