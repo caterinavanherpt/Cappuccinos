@@ -467,12 +467,22 @@ var TeleportAutocomplete = (function () {
           return _this6.parseCity(res);
         });
 
-        cb(results);
+        //only show urban areas in auto complete -- code from https://github.com/TimothyIp/BaseGrounds-App/blob/master/app/js/teleport-autocomplete.js
+        let getUrbanArea = [];
+          results.forEach( function(city) {
+            if (city.name === city.uaName) {
+              getUrbanArea.push(city);
+            }
+          })
+        cb(getUrbanArea);
       });
       req.send();
 
       return req;
     }
+    // *********
+
+
 
     /**
      * Parse city

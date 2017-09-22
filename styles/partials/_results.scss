@@ -23,7 +23,7 @@
 
 .results__header {
 	grid-area: pic;
-	border-radius: 50px;
+	border-radius: 35px;
 	margin: 20px;
 	background-size: contain;
 	display: flex;
@@ -98,10 +98,12 @@
 		font-size: .8em;
 	}
 	input {
-		border-radius: 50px;
+		border-radius: 20px;
 		border-width: 0;
-		padding-right: 15px;
-		padding-left: 15px;
+		padding-bottom: 10px;
+		padding-top: 10px;
+		padding-right: 20px;
+		padding-left: 20px;
 		background: #615C59;
 		color: #D2CDC8;
 		font-weight: 300;

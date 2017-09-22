@@ -69,30 +69,31 @@ app.collectInfo = function(value) {
 			// to provide an user feedback if the value does not exist in the datalist
 			if (optionFound) {
 				this.setCustomValidity('');
+				//bring the user to the results section and hide the form
+					$('input[type=submit]').on('click', function() {
+					$('html, body').animate({
+						scrollTop: $('.results__section').offset().top
+					}, 1000);
+					$('.form__section').hide();
+				});
 			} else {
 				this.setCustomValidity('Sorry this occupation is not on our list. Please select another.');
 			}
 		});
 	} 
-	//end of code from noupe
-	//alert user when they have chosen a city that doesn't have data available 
-	var uaInput = document.querySelectorAll('input.my-input');
-	for (var i = 0 ; i < uaInput.length; i++) {
-		uaInput[i].addEventListener('change', function(){
-			if (value.uaId) {
-					this.setCustomValidity('');
-				} else {
-					this.setCustomValidity('Sorry there is no data for this location. Please select another.');
-				}
-		});
-	}
-	//bring the user to the results section and hide the form
-		$('input[type=submit]').on('click', function() {
-		$('html, body').animate({
-			scrollTop: $('.results__section').offset().top
-		}, 1000);
-		$('.form__section').hide();
-	});
+	// end of code from noupe
+	// alert user when they have chosen a city that doesn't have data available 
+	// var uaInput = document.querySelectorAll('input[type=text]');
+	// console.log(uaInput);
+	// for (var i = 0 ; i < uaInput.length; i++) {
+	// 	uaInput[i].addEventListener('change', function(){
+	// 		if (uaId) {
+	// 				this.setCustomValidity('');
+	// 			} else {
+	// 				this.setCustomValidity('Sorry there is no data for this location. Please select another.');
+	// 			}
+	// 	});
+	// }
 }
 
 //get salaries and quality of life data based on urban area
@@ -146,7 +147,7 @@ app.displayResult = function(salaryValue,coffeeValue,occupation,uaName,uaImage) 
 	var numCoffee = numeral(salaryValue / coffeeValue).format('0,0');
 	var numIcons = Math.round((salaryValue/coffeeValue) / 1000);
 	var resultsHeader = document.querySelector('.results__header')
-	resultsHeader.style.background = `linear-gradient(45deg, rgba(26, 25, 34, 0.17), rgba(255, 255, 255, 0.38)), url(${uaImage})`;
+	resultsHeader.style.background = `linear-gradient(45deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.62)), url(${uaImage})`;
 	$('.results__ua').text(uaName);
 	$('.results__capp__cost').text(coffeeRes);
 	$('.occ__span').text(occupation);
